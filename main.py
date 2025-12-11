@@ -1,25 +1,40 @@
-# Archivo: main.py
-from todo_list import ToDoList
+"""
+Módulo principal de la aplicación To-Do List Manager.
+
+Este script sirve como punto de entrada (Entry Point) para la interfaz de línea
+de comandos (CLI), permitiendo al usuario interactuar con la clase ToDoList
+para gestionar sus tareas.
+"""
+
 import sys
+from todo_list import ToDoList
 
 def mostrar_menu():
+    """
+    Imprime en consola las opciones del menú principal.
+    """
     print("\n" + "="*30)
     print("   TO-DO LIST MANAGER")
     print("="*30)
     print("1. Agregar tarea")
     print("2. Ver todas las tareas")
     print("3. Marcar tarea como completada")
-    print("4. Eliminar tarea (Extra)")
+    print("4. Eliminar tarea")
     print("5. Borrar TODA la lista")
     print("6. Salir")
     print("="*30)
 
 def main():
-    # Instanciamos la clase principal
+    """
+    Función principal que inicializa el sistema y ejecuta el bucle de eventos.
+    
+    Maneja la entrada del usuario y delega las acciones a la instancia
+    de ToDoList.
+    """
     try:
         mi_lista = ToDoList()
     except ImportError:
-        print("Error: No se encuentra 'todo_list.py' o la clase 'ToDoList'.")
+        print("Error crítico: No se encuentra el módulo 'todo_list' o la clase 'ToDoList'.")
         return
 
     while True:
@@ -30,7 +45,6 @@ def main():
             nombre = input("Nombre de la tarea: ")
             prioridad = input("Prioridad (Alta/Media/Baja) [Enter para Media]: ")
             
-            # Si el usuario da Enter sin escribir, usa "Media" por defecto
             if not prioridad:
                 mi_lista.add_task(nombre)
             else:
@@ -48,7 +62,6 @@ def main():
             print(f"--> {resultado}")
 
         elif opcion == "4":
-            # Esta es tu funcionalidad EXTRA
             nombre = input("Escribe el nombre exacto de la tarea a ELIMINAR: ")
             resultado = mi_lista.delete_task(nombre)
             print(f"--> {resultado}")
