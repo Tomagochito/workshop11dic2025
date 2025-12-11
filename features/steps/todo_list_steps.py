@@ -77,7 +77,7 @@ def step_check_completed(context, task):
 @then('the last operation message should contain "{fragment}"')
 def step_check_last_message_contains(context, fragment):
     assert context.last_message is not None, "No hay mensaje de la última operación"
-    assert fragment in context.last_message, f"Mensaje esperado que contenga '{fragment}', mensaje real: '{context.last_message}'"
+    assert context.last_message == fragment, f"Mensaje esperado: '{fragment}', mensaje real: '{context.last_message}'"
 
 # ---------------------------
 # Clear list

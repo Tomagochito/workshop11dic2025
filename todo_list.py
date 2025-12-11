@@ -84,7 +84,7 @@ class ToDoList:
         for task in self.tasks:
             if task.name == task_name:
                 task.status = "Completed"
-                return f"Tarea '{task_name}' marcada como completada."
+                return "marcada como completada"
         return f"Error: Tarea '{task_name}' no encontrada."
 
     def clear_list(self):
@@ -95,7 +95,7 @@ class ToDoList:
             str: Mensaje de confirmación.
         """
         self.tasks = []
-        return "Lista vaciada completamente."
+        return "Lista vaciada"
 
     def get_task(self, task_name):
         """
